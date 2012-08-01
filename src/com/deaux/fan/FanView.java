@@ -154,5 +154,22 @@ public class FanView extends RelativeLayout {
 		    }
 		}
 	}
+	
+	public void hideWithoutAnimation() {
+		if (isOpen()) {
+			LayoutParams mainLayoutParams = (LayoutParams) mMainView.getLayoutParams();
+			LayoutParams fanLayoutParams = (LayoutParams) mFanView.getLayoutParams();
+			
+			mainLayoutParams.leftMargin = 0;
+	    	fanLayoutParams.leftMargin = -(int)px;
+	    	mainLayoutParams.rightMargin = 0;
+	    	
+	    	mMainView.requestLayout();
+	    	mFanView.requestLayout();
+	    	
+	    	mFanView.setVisibility(GONE);
+			mTintView.setVisibility(GONE);
+		}
+	}
 
 }
